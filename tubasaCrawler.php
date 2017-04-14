@@ -5,8 +5,8 @@ function request_url_contents($url) {
   $tries = 0;
   do {
     if ($tries > 0) sleep(1); # Wait for a sec before retrieving again
-      $contents = file_get_contents($url);
-      $tries++;
+    $contents = file_get_contents($url);
+    $tries++;
   }
   while ($tries <= 5 && $contents === FALSE);
   return $contents;
