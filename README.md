@@ -1,4 +1,4 @@
-# Tubasa 🚌
+# Tubasa 🚌 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 This repo contains the code for crawling and querying the information about the public transport service offered by Tubasa.
 
