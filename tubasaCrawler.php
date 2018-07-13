@@ -1,6 +1,10 @@
 <?php
 header('Content-type: application/json');
 
+function rand_color() {
+    return sprintf('%06X', mt_rand(0, 0xFFFFFF));
+}
+
 function request_url_contents($url) {
   $tries = 0;
   do {
@@ -32,8 +36,6 @@ function crawlStops($lineId, $stops) {
   return $crawledStops;
 }
 
-$staticColor = array("FF3B30", "34AADC", "4CD964", "FF4981", "C644FC", "FF9500", "FFDB4C", "FF4981", "4A4A4A", "FF3A2D", "1F1F21", "C86EDF");
-
 $url = 'http://badajoz.twa.es/code/getlineas.php';
 $linesRaw = request_url_contents($url);
 preg_match_all('/mostrarParadas\(\'(L_.*?)\'\).*LINEA\W(.*?)<\/a>/mi', $linesRaw, $lines);
@@ -47,7 +49,7 @@ for ($i=0; $i < $numberOfLines; $i++) {
 
   $currentLine["code"] = $lineId;
   $currentLine["label"] = $lineName;
-  $currentLine["color"] = $staticColor[$i];
+  $currentLine["color"] = rand_color();
 
   $url = 'http://badajoz.twa.es/code/getparadas.php?idl=' . urlencode($lineId);
   $stopsRaw = request_url_contents($url);
