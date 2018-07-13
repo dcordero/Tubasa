@@ -38,7 +38,7 @@ function crawlStops($lineId, $stops) {
 
 $url = 'http://badajoz.twa.es/code/getlineas.php';
 $linesRaw = request_url_contents($url);
-preg_match_all('/mostrarParadas\(\'(L_.*?)\'\).*LINEA\W(.*?)<\/a>/mi', $linesRaw, $lines);
+preg_match_all('/mostrarParadas\(\'(L.*?)\'\).*LINEA\W(.*?)<\/a>/mi', $linesRaw, $lines);
 
 $numberOfLines = count ($lines[0]);
 $result["lines"] = array();
